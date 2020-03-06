@@ -19,41 +19,40 @@ It's relatively straight forward if you look at the project, but you attach this
 The texture in this repo was created with the [PMREMGenerator](https://github.com/mrdoob/three.js/blob/dev/src/extras/PMREMGenerator.js) class that is included in the THREE library.  Here is the basic gist of how to do that:
 
     import {
-	    WebGLRenderer,
-	    TextureLoader,
-	    PMREMGenerator
+      WebGLRenderer,
+      TextureLoader,
+      PMREMGenerator
     } from  'three';
     
     const  renderer = new  WebGLRenderer({ antialias:  true });
     
     function  createPMREM ( path ) {
-	    new  TextureLoader().load( path, ( texture ) => {
-		    // read data from WebGL Texture
-		    const  pmremGenerator = new  PMREMGenerator( renderer );
-		    pmremGenerator.compileEquirectangularShader();
-		    const  pmrem = pmremGenerator.fromEquirectangular( texture );
-		        
-		    // read data from WebGL Texture
-		    const  data = new  Uint8ClampedArray(pmrem.width*pmrem.height*4);    
-		    renderer.readRenderTargetPixels(pmrem, 0, 0, pmrem.width, pmrem.height, data); 
-		       
-		    // set the alpha to full
-		    for(let  i=0; i<data.length; i += 4)
-			    data[i+3] = 255;	
-		    
-		    // create canvas
-		    const  canvas = document.createElement('canvas');
-		    canvas.width = pmrem.width;
-		    canvas.height = pmrem.height;
-		    document.body.appendChild(canvas);
-		    
-		    // draw data to canvas
-		    var  iData = new  ImageData(data, pmrem.width, pmrem.height);
-		    ctx.putImageData(iData, 0, 0);		    
-		    
-		    pmremGenerator.dispose();
-	    }, undefined, reject );
-    }
-	
-	createPRMEM('pathToTexture')
-
+      new  TextureLoader().load( path, ( texture ) => {
+        // read data from WebGL Texture
+        const  pmremGenerator = new  PMREMGenerator( renderer );
+        pmremGenerator.compileEquirectangularShader();
+        const  pmrem = pmremGenerator.fromEquirectangular( texture );
+          
+        // read data from WebGL Texture
+        const  data = new  Uint8ClampedArray(pmrem.width*pmrem.height*4);    
+        renderer.readRenderTargetPixels(pmrem, 0, 0, pmrem.width, pmrem.height, data); 
+           
+        // set the alpha to full
+        for(let  i=0; i<data.length; i += 4)
+          data[i+3] = 255;	
+        
+        // create canvas
+        const  canvas = document.createElement('canvas');
+        canvas.width = pmrem.width;
+        canvas.height = pmrem.height;
+        document.body.appendChild(canvas);
+        
+        // draw data to canvas
+        var  iData = new  ImageData(data, pmrem.width, pmrem.height);
+        canvas.getContext('2d').putImageData(iData, 0, 0);		    
+        
+        pmremGenerator.dispose();
+      });
+    };
+    
+    createPMREM('assets/forest.png');
