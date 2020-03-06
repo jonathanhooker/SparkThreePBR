@@ -3,7 +3,7 @@
 ![PBR Car](https://raw.githubusercontent.com/jonathanhooker/SparkThreePBR/master/textures/preview.jpg)
 This is a port of the [THREE.JS](https://github.com/mrdoob/three.js/) standard shader to Spark AR. I created this as a proof of concept on how you could build fully custom shaders just like you would with THREE. I don't intend to maintain or support this but hope it inspires others in the community to create custom shaders via scripting. Currently it only support IBL lighting with a PMREM texture and models with tangent space normal maps. The shader inside of the THREE supports a huge amount of different configurations so you can reference the original code if you'd like to extend this.
 
-The 3d model in the project is [Pony Cartoon](https://sketchfab.com/3d-models/pony-cartoon-885d9f60b3a9429bb4077cfac5653cf9) by [Slava Z.](Slava%20Z.) from [Sketchfab](https://sketchfab.com/)
+The 3d model in the project is [Pony Cartoon](https://sketchfab.com/3d-models/pony-cartoon-885d9f60b3a9429bb4077cfac5653cf9) by [Slava Z.](https://sketchfab.com/slava) from [Sketchfab](https://sketchfab.com/)
 
 The environment texture is [Ninomaru Teien](https://hdrihaven.com/hdri/?h=ninomaru_teien) by [Greg Zaal](https://hdrihaven.com/hdris/category/?a=Greg%20Zaal) from [HDRIHaven](https://hdrihaven.com/)
 
