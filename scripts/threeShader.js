@@ -359,7 +359,7 @@ function buildShader(baseColPx, normalPx, ormPx, emissivePx, pmremTexSignal){
     // this is where normalScale would go if I added it
     const mapN = swizzle(normalPx, 'rgb').mul(2).sub(1);
 
-    // normal = Reactive.normalize( vTBN.mulV3(mapN) );
+    normal = Reactive.normalize( vTBN.mulV3(mapN) );
     
     let totalEmissiveRadiance = swizzle(sRGBToLinear(emissivePx), 'rgb');
 
